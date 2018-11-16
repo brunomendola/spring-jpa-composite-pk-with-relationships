@@ -13,9 +13,12 @@ import java.io.Serializable;
 @IdClass(ActivityActionPK.class)
 @Table(name = "S3TSG_SAT_SAZ")
 public class ActivityAction implements Serializable {
-  @Id
+  @Column(name = "SAT_SAZ_SAT_COD", nullable = false, length = 10)
+  @Getter(AccessLevel.PROTECTED) @Setter(AccessLevel.PROTECTED)
+  private String activityCode;
+
   @ManyToOne
-  @JoinColumn(name = "SAT_SAZ_SAT_COD", referencedColumnName = "SAT_COD", nullable = false)
+  @JoinColumn(name = "SAT_SAZ_SAT_COD", referencedColumnName = "SAT_COD", nullable = false, insertable = false, updatable = false)
   private Activity activity;
   @Id
   @Column(name = "SAT_SAZ_SUBID", nullable = false, length = 10)
@@ -25,9 +28,13 @@ public class ActivityAction implements Serializable {
   private Action action;
 
   public ActivityAction(Activity activity, Action action, String subId) {
-    this.activity = activity;
+    this.setActivity(activity);
     this.action = action;
     this.subId = subId;
   }
 
+  public void setActivity(Activity activity) {
+    this.activity = activity;
+    this.activityCode = activity.getCode();
+  }
 }

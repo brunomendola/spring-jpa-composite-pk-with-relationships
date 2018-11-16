@@ -10,7 +10,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProfileActionPK implements Serializable {
-  private String profile;
-  private ActivityActionPK action;
+  private String profileCode;
+  private String activityCode;
+  private String actionSubId;
 
 }

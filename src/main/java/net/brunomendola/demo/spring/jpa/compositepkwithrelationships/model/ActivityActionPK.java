@@ -10,7 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ActivityActionPK implements Serializable {
-  private String activity;
+  private String activityCode;
   private String subId;
 
 }
